@@ -1,0 +1,28 @@
+header {
+    background: linear-gradient(270deg, rgb(0, 90, 255) 0%, rgb(0, 23, 68) 100%);
+    .navbar-brand {
+        color: #ffffff;
+    }
+    .nav-link {
+        color: #ffffff;
+    }
+    .active {
+        color: #ff8409;
+    }
+    .recruiter-link {
+        color: rgba($color: #ffffff, $alpha: .85);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1.15rem;
+        transition: all ease-in .15s;
+    }
+    .recruiter-link:hover {
+        color: rgba($color: #ffffff, $alpha: 1.0);
+    }
+    .btn-user-dropdown {
+        background-color: rgba($color: #ffffff, $alpha: .2);
+        border: 1px solid #ffffff;
+        border-radius: 6px;
+        color: #ffffff;
+    }
+}

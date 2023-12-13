@@ -1,0 +1,23 @@
+.icon-check {
+    color: rgb(92, 207, 77);
+}
+.text-origin {
+    color: #ff8c4a;
+}
+
+.btn-buynow {
+    color: #ff7423;
+    border: 1px solid #ff7423;
+    border-radius: 6px;
+    background-color: transparent;
+    padding: .5rem .75rem;
+    transition: all ease-in .15s;
+}
+
+.btn-buynow:hover {
+    background-color: rgba($color: #ff7423, $alpha: .1);
+}
+
+.mb-7 {
+    margin-bottom: 7rem;
+}

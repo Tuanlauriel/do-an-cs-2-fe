@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <form [formGroup]="bannerForm" (ngSubmit)="onSubmit()">
+                <div class="bg-white p-3 rounded border">
+                    <h3>Add Banner</h3>
+                    <div class="form-group mb-3">
+                        <label for="link" id="link">Link</label>
+                        <input type="text" class="form-control" id="link">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="banner" id="banner">Banner</label>
+                        <div class="container-banner mb-3">
+                        </div>
+                        <div class="text-center">
+                            <input type="file" id="banner" (change)="onSelectBanner($event)">
+                        </div>
+                    </div>
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-primary px-4">Upload</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
