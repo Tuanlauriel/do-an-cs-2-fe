@@ -9,7 +9,7 @@
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         BANNER TOTAL</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">10</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ bannerTotal }}</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fa-solid fa-image fa-2x text-gray-300"></i>
@@ -27,7 +27,7 @@
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                         BANNER ACTIVE</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ bannerActive }}</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fa-solid fa-image fa-2x text-gray-300"></i>
@@ -47,7 +47,7 @@
                                     </div>
                                     <div class="row no-gutters align-items-center">
                                         <div class="col-auto">
-                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" dis>5</div>
+                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ bannerDisabled }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -66,28 +66,44 @@
                 <div class="col-12">
                     <div class="card shadow mb-4">
                         <!-- Card Header - Dropdown -->
-                        <div
-                            class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                             <h6 class="m-0 font-weight-bold text-primary">Banner List</h6>
                         </div>
                         <!-- Card Body -->
                         <div class="card-body">
                             <div class="chart-area">
-                                <table class="table">
+                                <table class="table table-hover table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>No.</th>
-                                            <th>ID</th>
+                                            <th style="max-width: 3rem;">ID</th>
                                             <th>Image</th>
                                             <th>Link</th>
-                                            <th>Status</th>
+                                            <th style="max-width: 2rem;">Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @for (banner of bannerList; track $index) {
                                         <tr>
-                                            
+                                            <td>{{ banner.id }}</td>
+                                            <td><img [src]="banner.image" alt="" width="100"></td>
+                                            <td><a [href]="banner.link">{{ banner.link }}</a></td>
+                                            <td>
+                                                <div class="d-flex justify-content-center align-items-center w-100">
+                                                    <input type="checkbox" [checked]="banner.status" (change)="updateBanner(banner, $event)">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center justify-content-center w-100">
+                                                    <button class="btn btn-warning"><i
+                                                            class="fa-solid fa-pen-to-square"></i></button>
+                                                            <span class="mx-2"></span>
+                                                    <button class="btn btn-danger" (click)="deleteBanner(banner.id)"><i
+                                                            class="fa-solid fa-trash"></i></button>
+                                                </div>
+                                            </td>
                                         </tr>
+                                        }
                                     </tbody>
                                 </table>
                             </div>
@@ -96,9 +112,9 @@
                 </div>
             </div>
         </div>
-    
+
         <div>
-    
+
         </div>
     </div>
 </div>

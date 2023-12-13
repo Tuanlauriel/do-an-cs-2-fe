@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Banner } from '../interfaces/banner';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,10 @@ export class BannerService {
 
   constructor(private http: HttpClient) { }
 
+  getAllBanner(): Observable<any> {
+    return this.http.get(this.apiUrl);
+  }
+
   postBanner(image: File, link: string): Observable<any> {
     const formData = new FormData();
     formData.append('image', image);
@@ -17,4 +22,15 @@ export class BannerService {
 
     return this.http.post(this.apiUrl, formData);
   }
+
+  putBanner(banner: Banner): Observable<any> {
+    const API = `${this.apiUrl}/${banner.id}`;
+    return this.http.put(API, banner);
+  }
+
+  deleteBanner(id: number): Observable<any> {
+    const API = `${this.apiUrl}/${id}`
+    return this.http.delete(API);
+  }
+
 }

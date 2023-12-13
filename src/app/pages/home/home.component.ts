@@ -1,5 +1,8 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, NgModule } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { Banner } from '../../interfaces/banner';
+import { BannerService } from '../../services/banner.service';
+import { response } from 'express';
 
 @Component({
   selector: 'app-home',
@@ -8,6 +11,13 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  bannerList?: Banner[];
+
+  constructor(private bannerService: BannerService) { }
+
+  ngOnInit(): void {
+    this.bannerService.getAllBanner().subscribe( response => this.bannerList = response.data);
+  }
 
 }

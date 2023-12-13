@@ -1,23 +1,17 @@
-<p>home works!</p>
 <div class="container p-3">
     <section class="banner-section mb-4">
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="./assets/images/banner/AeonS_hrbn_124684.webp" class="d-block w-100 banner-img"
-                        alt="..." />
-                </div>
-                <div class="carousel-item">
-                    <img src="./assets/images/banner/nab_hrbnOct2_124666.webp" class="d-block w-100 banner-img"
-                        alt="..." />
-                </div>
-                <div class="carousel-item">
-                    <img src="./assets/images/banner/vas_hrbn_124577.webp" class="d-block w-100 banner-img" alt="..." />
-                </div>
-                <div class="carousel-item">
-                    <img src="./assets/images/banner/vinhome_hrbn_101419.webp" class="d-block w-100 banner-img"
-                        alt="..." />
-                </div>
+                @for (banner of bannerList; track $index) {
+                    <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                        @if (banner.status) {
+                            <a [href]="banner.link">
+                                <img [src]="banner.image" class="d-block w-100 banner-img"
+                                alt="banner.link" />
+                            </a>
+                        }
+                    </div>
+                }
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
                 data-bs-slide="prev">
@@ -130,7 +124,7 @@
             <h3 class="section-title p-2">Featured Jobs</h3>
             <div class="row g-2 p-2">
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div *ngFor="let job of jobs" class="card mb-3">
+                    <!-- <div *ngFor="let job of jobs" class="card mb-3">
                         <div class="row g-0">
                             <div class="col-md-4 d-flex align-items-center justify-content-center">
                                 <img [src]="job.company.logo_image" class="w-100 p-2" alt="..." />
@@ -162,7 +156,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
