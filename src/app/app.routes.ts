@@ -3,7 +3,6 @@ import { UserLayoutComponent } from './layouts/user-layout/user-layout.component
 import { HomeComponent } from './pages/home/home.component';
 import { MyJobComponent } from './pages/my-job/my-job.component';
 import { CompaniesComponent } from './pages/companies/companies.component';
-import { JobsComponent } from './pages/jobs/jobs.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
@@ -14,6 +13,7 @@ import { RecruiterRegisterComponent } from './pages/recruiter/recruiter-register
 import { DashboardAdminComponent } from './pages/admin/dashboard-admin/dashboard-admin.component';
 import { BannerListComponent } from './pages/admin/banner-list/banner-list.component';
 import { AddBannerComponent } from './pages/admin/add-banner/add-banner.component';
+import { JobListComponent } from './pages/job-list/job-list.component';
 
 export const routes: Routes = [
     {
@@ -21,10 +21,10 @@ export const routes: Routes = [
             { path: 'home', component: HomeComponent },
             { path: 'login', component: LoginComponent },
             { path: 'register', component: RegisterComponent },
-            { path: 'jobs', component: JobsComponent },
+            { path: 'jobs', component: JobListComponent },
             { path: 'companies', component: CompaniesComponent },
             { path: 'my-job', component: MyJobComponent },
-            { path: '', redirectTo: 'home', pathMatch: 'full'}
+            { path: '', redirectTo: 'home', pathMatch: 'full' }
         ]
     },
     {
@@ -39,8 +39,8 @@ export const routes: Routes = [
             { path: 'dashboard', component: DashboardAdminComponent },
             { path: 'banner-list', component: BannerListComponent },
             { path: 'add-banner', component: AddBannerComponent },
-            { path: '', redirectTo: '/dashboard', pathMatch: 'full'}
+            { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
         ]
     },
-    { path: '**', component: PageNotFoundComponent}
+    { path: '**', component: PageNotFoundComponent },
 ];

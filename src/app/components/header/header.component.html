@@ -23,40 +23,54 @@
                         <a class="nav-link" aria-current="page" routerLink="my-job" routerLinkActive="active">My job</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" routerLink="/admin/dashboard" routerLinkActive="active">Admin</a>
+                        <a class="nav-link" aria-current="page" routerLink="/admin/dashboard"
+                            routerLinkActive="active">Admin</a>
                     </li>
                 </ul>
                 <div class="d-flex align-items-center">
                     <a routerLink="/recruiter/home" class="recruiter-link">For employers</a>
                     <span class="px-3"></span>
                     @if (isLoggedIn) {
-                        <div class="dropdown">
-                            <button class="dropdown-toggle btn-user-dropdown" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                <img src="./assets/images/avatar.png" alt="" width="40px">
-                                {{ getUser?.firstName }}
-                            </button>
-                            <ul class="dropdown-menu p-3" style="position: absolute;inset: 0px 0px auto auto;margin: 0px;transform: translate3d(0px, 40.4px, 0px);">
-                                <li><a class="dropdown-item" routerLink="/profile"><i class="fa-solid fa-user"></i> Profile</a></li>
-                                <li><button class="dropdown-item" (click)="logout()" ><i class="fa-solid fa-arrow-left"></i> Logout</button></li>
-                            </ul>
-                        </div>
+                    <div class="dropdown">
+                        <button class="dropdown-toggle btn-user-dropdown" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <img src="./assets/images/avatar.png" alt="" width="40px">
+                            {{ getUser?.firstName }}
+                        </button>
+                        <ul class="dropdown-menu p-3"
+                            style="position: absolute;inset: 0px 0px auto auto;margin: 0px;transform: translate3d(0px, 40.4px, 0px);">
+                            <li><a class="dropdown-item" routerLink="/profile"><i class="fa-solid fa-user"></i>
+                                    Profile</a></li>
+                            <li><button class="dropdown-item" (click)="logout()"><i class="fa-solid fa-arrow-left"></i>
+                                    Logout</button></li>
+                        </ul>
+                    </div>
                     } @else {
-                        <div class="dropdown">
-                            <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                <i class="fa-solid fa-user"></i>
-                                Login
-                            </button>
-                            <ul class="dropdown-menu p-3" style="position: absolute;inset: 0px 0px auto auto;margin: 0px;transform: translate3d(0px, 40.4px, 0px);">
-                                <h5>Job Seeker Login</h5>
-                                <li><a class="dropdown-item" routerLink="/login"><i class="fa-solid fa-right-to-bracket"></i> Login</a></li>
-                                <li><a class="dropdown-item" routerLink="/register"><i class="fa-solid fa-user-plus"></i> Register an account</a></li>
-                            </ul>
-                        </div>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="fa-solid fa-user"></i>
+                            Login
+                        </button>
+                        <ul class="dropdown-menu p-3"
+                            style="position: absolute;inset: 0px 0px auto auto;margin: 0px;transform: translate3d(0px, 40.4px, 0px);">
+                            <h5>Job Seeker Login</h5>
+                            <li><a class="dropdown-item" routerLink="/login"><i
+                                        class="fa-solid fa-right-to-bracket"></i> Login</a></li>
+                            <li><a class="dropdown-item" routerLink="/register"><i class="fa-solid fa-user-plus"></i>
+                                    Register an account</a></li>
+                        </ul>
+                    </div>
                     }
                 </div>
             </div>
         </div>
     </nav>
+    <div class="container pb-lg-3">
+        <div class="input-group">
+            <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
+            <input type="text" class="form-control" placeholder="Search jobs">
+            <button type="button" class="btn btn-warning">Search</button>
+        </div>
+    </div>
 </header>
