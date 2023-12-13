@@ -1,0 +1,76 @@
+.banner-section {
+    .banner-img {
+        border-radius: 0.5rem;
+    }
+}
+
+.featured-companies-section {
+    .company-link {
+        text-decoration: none;
+        color: #333;
+        transition: all ease-in 0.15s;
+
+        .card-title {
+            line-height: 1.2rem;
+            height: 2.4rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+        }
+
+        .new-job-btn {
+            border-radius: 6px;
+            border: 1px solid #008cff;
+            background-color: #2fa1ff;
+            color: #ffffff;
+        }
+    }
+
+    .company-link:hover {
+        color: rgb(247, 176, 24);
+    }
+}
+
+.featured-jobs {
+    .job-container {
+        border-radius: 0.5rem;
+        border: 1px solid #acd9ff;
+
+        .section-title {
+            background-color: #ebf6ff;
+            border-radius: 0.5rem;
+        }
+
+        .card {
+
+            .job-link,
+            .company-link,
+            .job-location {
+                line-height: 1.2rem;
+                height: 1.2rem;
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: normal;
+                text-decoration: none;
+                color: #333;
+                font-weight: 500;
+                transition: all ease-in .15s;
+            }
+
+            .job-link:hover,
+            .company-link:hover {
+                color: #ffae00;
+            }
+
+            .job-salary {
+                color: #ffae00;
+            }
+        }
+    }
+}
