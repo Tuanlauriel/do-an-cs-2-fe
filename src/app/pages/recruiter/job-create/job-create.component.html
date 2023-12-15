@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <div class="border rounded p-2 shadow-sm">
+    <form>
+      <div class="row">
+        <h3>Create Job</h3>
+        <div class="col-lg-5">
+          <div class="form-group mb-3">
+            <label for="jobName" class="form-label">Name</label>
+            <input type="text" class="form-control" id="jobName">
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="form-group mb-3">
+              <label for="salaryFrom" class="form-label">Salary from ($)</label>
+              <input type="text" class="form-control" id="salaryFrom">
+            </div>
+            <div class="form-group mb-3">
+              <label for="salaryTo" class="form-label">Salary to ($)</label>
+              <input type="text" class="form-control" id="salaryTo">
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label for="jobField" class="form-label">Job field</label>
+            <select id="jobField" class="form-select">
+              <option selected>IT</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div class="form-group mb-3">
+            <label for="jobDescription" class="form-label">Job Description (Using HTML)</label>
+            <textarea id="jobDescription" cols="30" rows="6" class="form-control"></textarea>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="form-group mb-3">
+            <label for="jobOffer" class="form-label">Offer (Using HTML)</label>
+            <textarea id="jobOffer" cols="30" rows="6" class="form-control"></textarea>
+          </div>
+          <div class="form-group mb-3">
+            <label for="jobRequirement" class="form-label">Requirement (Using HTML)</label>
+            <textarea id="jobRequirement" cols="30" rows="6" class="form-control"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+
+        </div>
+        <div class="col-6 text-end">
+          <button type="submit" class="btn btn-primary">Create Job</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

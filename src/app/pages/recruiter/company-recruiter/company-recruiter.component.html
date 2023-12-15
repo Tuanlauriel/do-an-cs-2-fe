@@ -1,17 +1,14 @@
-<p>job-detail works!</p>
 <section class="job-detail">
     <div class="container mt-3">
         <div class="card mb-3 contain-info-jobs">
             <div class="row g-0">
                 <div class="col-md-4 contain-img">
-                    <img src="http://127.0.0.1:8000/images/companies/logo.png" class="img-fluid rounded-start"
-                        alt="...">
+                    <img [src]="company?.logo" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body contain-title">
-                        <h5 class="card-title">Game Developer</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title">{{ company?.name }}</h5>
+                        <p class="card-text">{{ company?.location }}</p>
                         <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
                     </div>
                 </div>
@@ -21,13 +18,13 @@
         <!-- Tabs navs -->
         <ul class="nav nav-tabs mb-3 list-tab" id="ex1" role="tablist">
             <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1" role="tab"
-                    aria-controls="ex1-tabs-1" aria-selected="true">JOB INFO</a>
+                <a class="nav-link" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1" role="tab"
+                    aria-controls="ex1-tabs-1" aria-selected="true" routerLink="/jobs-detail"
+                    routerLinkActive="active">JOB INFO</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="ex1-tab-2" data-mdb-toggle="tab" href="#ex1-tabs-2" role="tab"
-                    aria-controls="ex1-tabs-2" aria-selected="false" routerLink="/company-info"
-                    routerLinkActive="active">COMPANY INFO</a>
+                <a class="nav-link active" id="ex1-tab-2" data-mdb-toggle="tab" href="#ex1-tabs-2" role="tab"
+                    aria-controls="ex1-tabs-2" aria-selected="false">COMPANY INFO</a>
             </li>
             <li class="nav-item" role="presentation">
                 <a class="nav-link" id="ex1-tab-3" data-mdb-toggle="tab" href="#ex1-tabs-3" role="tab"
@@ -38,8 +35,7 @@
 
         <!-- Tabs content -->
         <div class="tab-content" id="ex1-content">
-            <div class="tab-pane fade show active content-tabs" id="ex1-tabs-1" role="tabpanel"
-                aria-labelledby="ex1-tab-1">
+            <div class="tab-pane fade content-tabs" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
                 <div class="contain-job-decs">
                     <h3 class="title-decs">
                         JOB DESCRIPTION
@@ -76,15 +72,16 @@
 
                 <div class="contain-job-location">
                     <h3 class="title_location">
-                        <div class="contain-location">
-                            <i class="fa-solid fa-location-dot"></i>
-                        </div>
-                        428 Trần Đại Nghĩa, Ngũ Hành Sơn, Đà Nẵng
+                        JOB LOCATIONS
                     </h3>
+                    <div class="contain-location">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
-                Tab 2 content
+            <div class="tab-pane fade show active content-tabs" id="ex1-tabs-2" role="tabpanel"
+                aria-labelledby="ex1-tab-2">
+                COMPANY INFO
             </div>
             <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
                 Tab 3 content

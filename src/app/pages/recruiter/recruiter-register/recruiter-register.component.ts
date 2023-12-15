@@ -8,6 +8,7 @@ import { forkJoin } from 'rxjs';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { LocalStorageService } from '../../../services/local-storage.service';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-recruiter-register',
@@ -31,7 +32,7 @@ export class RecruiterRegisterComponent implements OnInit{
   loading: boolean = false;
   errorMessage?: string;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private userService: UserService) { }
 
   ngOnInit(): void {
     this.recruiterForm = this.fb.group({
@@ -91,6 +92,7 @@ export class RecruiterRegisterComponent implements OnInit{
                   next: (response) => {
                     this.localStorageService.setToken(response.data.token);
                     this.localStorageService.setTokenRefresh(response.data.tokenRefresh);
+                    this.userService.loadUser();
                     this.router.navigate(['/recruiter/home']);
                   },
                   error: (err) => {

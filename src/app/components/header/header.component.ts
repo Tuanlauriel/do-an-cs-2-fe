@@ -25,20 +25,9 @@ export class HeaderComponent implements OnInit {
   }
 
   get getUser() {
-    if (this.isLoggedIn && !this.user) {
-      if (this.authService.isLoggedIn()) {
-        const email = this.localStorageService.getEmail();
-        if (email) {
-          this.userService.getUser(email).subscribe({
-            next: (response) => {
-              this.user = response.data;
-            },
-            error: (err) => {
-              console.log(err);
-            }
-          })
-        }
-      }
+    if (this.isLoggedIn) {
+      this.userService.loadUser();
+      this.user = this.userService.getUser();
     }
     return this.user;
   }

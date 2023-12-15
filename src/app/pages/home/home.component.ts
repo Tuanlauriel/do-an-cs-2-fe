@@ -3,11 +3,14 @@ import { AuthService } from '../../services/auth.service';
 import { Banner } from '../../interfaces/banner';
 import { BannerService } from '../../services/banner.service';
 import { response } from 'express';
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterLink
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
