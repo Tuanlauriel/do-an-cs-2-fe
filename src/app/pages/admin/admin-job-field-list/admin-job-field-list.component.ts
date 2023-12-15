@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Banner} from "../../../interfaces/banner";
 import {BannerService} from "../../../services/banner.service";
+import {JobFieldService} from "../../../services/job-field.service";
+import {JobField} from "../../../interfaces/job_field";
 
 @Component({
   selector: 'app-admin-job-field-list',
@@ -9,36 +11,20 @@ import {BannerService} from "../../../services/banner.service";
   templateUrl: './admin-job-field-list.component.html',
   styleUrl: './admin-job-field-list.component.scss'
 })
-export class AdminJobFieldListComponent {
+export class AdminJobFieldListComponent implements OnInit{
 
-  bannerList?: Banner[];
-  bannerTotal?: number;
-  bannerActive?: number;
-  bannerDisabled?: number;
+  jobFieldList?: JobField[];
+  jobFieldTotal?: number;
 
-  constructor(private bannerService: BannerService) { }
+  constructor(private jobFieldService: JobFieldService) { }
 
   ngOnInit(): void {
     this.loadBanner();
   }
 
-  updateBanner(banner: Banner, event: any): void {
-    banner.status = event.target.checked;
-
-    this.bannerService.putBanner(banner).subscribe({
-      next: (response) => {
-        this.loadBanner();
-        console.log(response);
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    });
-  }
-
   deleteBanner(id: number | undefined): void {
     if (id) {
-      this.bannerService.deleteBanner(id).subscribe({
+      this.jobFieldService.deleteJobField(id).subscribe({
         next: (response) => {
           this.loadBanner();
           console.log(response);
@@ -51,12 +37,10 @@ export class AdminJobFieldListComponent {
   }
 
   private loadBanner(): void {
-    this.bannerService.getAllBanner().subscribe({
+    this.jobFieldService.getJobFieldAll().subscribe({
       next: (response) => {
-        this.bannerList = response.data;
-        this.bannerTotal = this.bannerList?.length;
-        this.bannerActive = this.countBannersByStatus(true);
-        this.bannerDisabled = this.countBannersByStatus(false);
+        this.jobFieldList = response.data;
+        this.jobFieldTotal = this.jobFieldList?.length;
       },
       error: (err) => {
         console.log(err);
@@ -64,15 +48,4 @@ export class AdminJobFieldListComponent {
     });
   }
 
-  private countBannersByStatus(status: boolean): number {
-    // Sử dụng hàm filter để lọc danh sách banner theo status
-    const filteredBanners = (this.bannerList || []).filter(banner => banner.status === status);
-
-    // Sử dụng thuật toán reduce để tính tổng số lượng banner
-    const count = filteredBanners.reduce((accumulator, currentBanner) => {
-      return accumulator + 1;
-    }, 0);
-
-    return count;
-  }
 }

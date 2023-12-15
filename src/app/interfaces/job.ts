@@ -11,6 +11,6 @@ export interface Job {
     created_at?: Date,
     featured?: boolean,
     location?: string,
-    field?: JobField,
-    user?: User
+    jobField?: string,
+    email?: string
 }

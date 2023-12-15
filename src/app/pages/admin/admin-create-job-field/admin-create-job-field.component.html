@@ -15,9 +15,11 @@
               <div class="alert alert-success">{{ successMessage }}</div>
             }
             <div>
-              <button class="btn btn-primary">
-
-                Create Job Field
+              <button class="btn btn-primary" type="submit">
+                @if (loading) {
+                  <span class="spinner-border spinner-border-sm"></span>
+                }
+                <span role="status">{{ loading ? ' Creating...' : 'Create Banner' }}</span>
               </button>
             </div>
           </div>
