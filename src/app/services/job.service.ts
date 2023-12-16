@@ -11,6 +11,16 @@ export class JobService {
 
   constructor(private http: HttpClient) { }
 
+  getAllJobByRecruiter(id: number): Observable<any> {
+    const API = `${this.apiUrl}/by-recruiter/${id}`;
+    return this.http.get(API);
+  }
+
+  deleteJob(id: number): Observable<any> {
+    const API = `${this.apiUrl}/${id}`;
+    return this.http.delete(API);
+  }
+
   postJob(job: Job): Observable<any> {
     return this.http.post(this.apiUrl, job);
   }

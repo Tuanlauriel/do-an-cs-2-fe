@@ -8,7 +8,7 @@ export interface Job {
     offer?: string,
     requirement?: string,
     salary?: number,
-    created_at?: Date,
+    createdAt?: Date,
     featured?: boolean,
     location?: string,
     jobField?: string,
