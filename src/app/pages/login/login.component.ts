@@ -4,6 +4,7 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../interfaces/user';
 import { LocalStorageService } from '../../services/local-storage.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,8 @@ export class LoginComponent implements OnInit {
   formLogin!: FormGroup;
   errorMessage?: string;
   loading: boolean = false;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     this.formLogin = new FormGroup({
@@ -43,6 +46,7 @@ export class LoginComponent implements OnInit {
         next: (response) => {
           this.localStorageService.setToken(response.data.token);
           this.localStorageService.setTokenRefresh(response.data.tokenRefresh);
+          this.userService.loadUser();
           this.router.navigate(['/home']);
         },
         error: (err) => {

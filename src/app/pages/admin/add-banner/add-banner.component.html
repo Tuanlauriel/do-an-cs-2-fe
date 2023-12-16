@@ -1,26 +1,40 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-            <form [formGroup]="bannerForm" (ngSubmit)="onSubmit()">
-                <div class="bg-white p-3 rounded border">
-                    <h3>Add Banner</h3>
-                    <div class="form-group mb-3">
-                        <label for="link" id="link">Link</label>
-                        <input type="text" class="form-control" id="link">
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="banner" id="banner">Banner</label>
-                        <div class="container-banner mb-3">
-                        </div>
-                        <div class="text-center">
-                            <input type="file" id="banner" (change)="onSelectBanner($event)">
-                        </div>
-                    </div>
-                    <div class="text-end">
-                        <button type="submit" class="btn btn-primary px-4">Upload</button>
-                    </div>
-                </div>
-            </form>
+  <div class="row">
+    <div class="col-12">
+      <form [formGroup]="bannerForm" (ngSubmit)="onSubmit()">
+        <div class="bg-white p-3 rounded border">
+          <h3>Add Banner</h3>
+          <div class="form-group mb-3">
+            <label for="link" class="form-label">Link</label>
+            <input type="text" class="form-control" id="link" formControlName="link">
+          </div>
+          <div class="form-group mb-3">
+            <label for="banner" class="form-label">Banner</label>
+            <div class="container-banner mb-3">
+              <div class="p-3">
+                <img [src]="imageTemp" class="banner-img" id="banner">
+              </div>
+            </div>
+            <div class="text-center">
+              <input type="file" (change)="onSelectBanner($event)" formControlName="image">
+            </div>
+          </div>
+          <div class="d-flex align-items-center justify-content-between">
+            @if (errorMessage) {
+              <div class="alert alert-danger">{{ errorMessage }}</div>
+            }
+            @if (successMessage) {
+              <div class="alert alert-success">{{ successMessage }}</div>
+            }
+            <button class="btn btn-primary" type="submit">
+              @if (loading) {
+                <span class="spinner-border spinner-border-sm"></span>
+              }
+              <span role="status">{{ loading ? ' Uploading...' : 'Upload' }}</span>
+            </button>
+          </div>
         </div>
+      </form>
     </div>
+  </div>
 </div>

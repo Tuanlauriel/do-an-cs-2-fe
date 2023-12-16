@@ -14,6 +14,16 @@ import { DashboardAdminComponent } from './pages/admin/dashboard-admin/dashboard
 import { BannerListComponent } from './pages/admin/banner-list/banner-list.component';
 import { AddBannerComponent } from './pages/admin/add-banner/add-banner.component';
 import { JobListComponent } from './pages/job-list/job-list.component';
+import { CompanyRecruiterComponent } from './pages/recruiter/company-recruiter/company-recruiter.component';
+import { JobRecruiterComponent } from './pages/recruiter/job-recruiter/job-recruiter.component';
+import { adminGuard } from './auth-guard/admin.guard';
+import { recruiterGuard } from './auth-guard/recruiter.guard';
+import { JobCreateComponent } from './pages/recruiter/job-create/job-create.component';
+import { RecruiterListJobComponent } from './pages/recruiter/recruiter-list-job/recruiter-list-job.component';
+import {AdminCreateJobFieldComponent} from "./pages/admin/admin-create-job-field/admin-create-job-field.component";
+import {AdminJobFieldListComponent} from "./pages/admin/admin-job-field-list/admin-job-field-list.component";
+import {JobDetailsComponent} from "./pages/job-details/job-details.component";
+import {CompanyInfoComponent} from "./pages/company-info/company-info.component";
 
 export const routes: Routes = [
     {
@@ -22,7 +32,9 @@ export const routes: Routes = [
             { path: 'login', component: LoginComponent },
             { path: 'register', component: RegisterComponent },
             { path: 'jobs', component: JobListComponent },
+            { path: 'jobs/:id', component: JobDetailsComponent },
             { path: 'companies', component: CompaniesComponent },
+            { path: 'companies/:id', component: CompanyInfoComponent },
             { path: 'my-job', component: MyJobComponent },
             { path: '', redirectTo: 'home', pathMatch: 'full' }
         ]
@@ -31,16 +43,25 @@ export const routes: Routes = [
         path: 'recruiter', component: RecruiterLayoutComponent, children: [
             { path: 'home', component: RecruiterHomeComponent },
             { path: 'register', component: RecruiterRegisterComponent },
+            { path: 'company', component: CompanyRecruiterComponent, canActivate: [recruiterGuard] },
+            { path: 'job', component: JobRecruiterComponent, canActivate: [recruiterGuard], children: [
+                { path: 'list', component: RecruiterListJobComponent },
+                { path: 'create', component: JobCreateComponent },
+            ] },
+            { path: 'register', component: RecruiterRegisterComponent },
             { path: '', redirectTo: '/recruiter/home', pathMatch: 'full' }
         ]
     },
     {
-        path: 'admin', component: AdminLayoutComponent, children: [
+        path: 'admin', component: AdminLayoutComponent, canActivate: [adminGuard], children: [
             { path: 'dashboard', component: DashboardAdminComponent },
             { path: 'banner-list', component: BannerListComponent },
             { path: 'add-banner', component: AddBannerComponent },
+            { path: 'create-job-field', component: AdminCreateJobFieldComponent },
+            { path: 'job-field-list', component: AdminJobFieldListComponent },
             { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
         ]
     },
     { path: '**', component: PageNotFoundComponent },
+    { path: 'not-found', component: PageNotFoundComponent },
 ];

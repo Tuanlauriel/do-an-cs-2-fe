@@ -22,10 +22,6 @@
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" routerLink="my-job" routerLinkActive="active">My job</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" routerLink="/admin/dashboard"
-                            routerLinkActive="active">Admin</a>
-                    </li>
                 </ul>
                 <div class="d-flex align-items-center">
                     <a routerLink="/recruiter/home" class="recruiter-link">For employers</a>
@@ -41,6 +37,14 @@
                             style="position: absolute;inset: 0px 0px auto auto;margin: 0px;transform: translate3d(0px, 40.4px, 0px);">
                             <li><a class="dropdown-item" routerLink="/profile"><i class="fa-solid fa-user"></i>
                                     Profile</a></li>
+                            @if (getUser?.role === 'ADMIN') {
+                                <li>
+                                    <a class="dropdown-item" routerLink="/admin/dashboard"><i class="fa-solid fa-user"></i>
+                                        Admin Dashboard
+                                    </a>
+                                </li>
+                            }
+                            <hr>
                             <li><button class="dropdown-item" (click)="logout()"><i class="fa-solid fa-arrow-left"></i>
                                     Logout</button></li>
                         </ul>
